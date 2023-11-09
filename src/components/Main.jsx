@@ -1,12 +1,17 @@
 import React from "react";
 import Inputtextarea from "./Inputtextarea";
+import Selector from "./Selector";
 
 function Main() {
-  const questionLabel = "Question";
-  const questionPlaceholder = "What do you want to ask ?"
   return (
-    <div className="h-[50%] w-[50%] mx-auto bg-slate-50 mt-8">
-      <Inputtextarea questionLabel={questionLabel} questionPlaceholder={questionPlaceholder} />
+    <div className=" w-[50%] mx-auto bg-slate-50 mt-8">
+      <Inputtextarea
+        questionLabel="Question"
+        questionPlaceholder="What do you want to ask ?"
+      />
+      <div className="pt-[70px] pl-[30px]">
+        <Selector />
+      </div>
     </div>
   );
 }

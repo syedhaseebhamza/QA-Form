@@ -8,22 +8,22 @@ function Layout() {
       <Navbar heading="New Questionnaire" loginBtn="log in" />
       <Main />
       <Button
-        marginTop="10px"
+        marginTop="24px"
         marginLeft="25%"
         height="40px"
         width="50%"
         variant="secondary"
       >
-        log in{" "}
+        add question{" "}
       </Button>
       <Button
-        marginTop="10px"
+        marginTop="24px"
         marginLeft="25%"
         height="40px"
         width="50%"
         variant="primary"
       >
-        log out
+        save & share
       </Button>
     </div>
   );

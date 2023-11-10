@@ -1,7 +1,7 @@
 import React from "react";
 // import Text from "./Text";
 
-function Inputtextarea({ questionLabel, questionPlaceholder , margin }) {
+function Inputtextarea({ questionLabel, questionPlaceholder }) {
   //   const [selectedOption, setselectedOption] = useState(""); // for test
 
   //   const handleSelectChange = (e) => {
@@ -21,7 +21,6 @@ function Inputtextarea({ questionLabel, questionPlaceholder , margin }) {
         className="h-12 py-2 px-3 border rounded text-gray-700 leading-tight focus:outline-none w-[95%] "
         placeholder={questionPlaceholder}
         required
-        
       />
 
       {/* <select

@@ -5,7 +5,7 @@ function Navbar({ heading, loginBtn }) {
     <div>
       <header className="bg-primary h-[60px]">
         <div className="flex justify-between items-center py-0 px-4 h-[58px] ">
-          <div className="bg-primary h-[48px] w-[48px] inline-flex justify-center items-center flex-shrink-0 shadow shadow-red-800">
+          <div className="bg-primary h-[44px] w-[30px] inline-flex justify-center items-center flex-shrink-0 shadow shadow-red-800">
             <img className="" src="/MasterEmblemNoBox.svg" alt="noImage" />
           </div>
           <h1 className="text-slate-100 capitalize text-lg font-medium not-italic font-sans	">

@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 
 import Dynamicinput from "./Dynamicinput";
+import Checkboxinput from "./Checkboxinput";
+import Radioboxinput from "./Radioboxinput";
 
 function Pickerdropdown() {
   const [selectedOption, setSelectedOption] = useState("Short Answer");
 
   const handleButtonClick = () => {
-    if (selectedOption !== "select") {
-      setSelectedOption("select");
-    }
+    // if (selectedOption !== "select one option") {
+    // }
+    setSelectedOption("select one option");
   };
 
   const handleOptionSelect = (componentName) => {
@@ -30,21 +32,31 @@ function Pickerdropdown() {
       </button>
 
       <div className="pt-[17px]">
-        {selectedOption === "select" ? (
+        {selectedOption === "select one option" ? (
           <ul>
             <li onClick={() => handleOptionSelect("Short Answer")}>
               Short Answer
             </li>
-            <li onClick={() => handleOptionSelect("Paragrapgh")}>Paragrapgh</li>
+            <li onClick={() => handleOptionSelect("Paragraph")}>Paragraph</li>
+            <li onClick={() => handleOptionSelect("Checkbox")}>Check box</li>
+            <li onClick={() => handleOptionSelect("Multiple Choice")}>
+              Multiple Choice
+            </li>
           </ul>
         ) : (
           <div>
             {selectedOption === "Short Answer" && (
-              <Dynamicinput placeholder={"Short Answer"} />
+              <Dynamicinput type="inputField" placeholder="Short Answer" />
             )}
-            {selectedOption === "Paragrapgh" && (
-              <Dynamicinput placeholder={"Long answer text"} height="5rem" />
+            {selectedOption === "Paragraph" && (
+              <Dynamicinput
+                type="inputField"
+                placeholder="Long answer text"
+                padding="1.5rem"
+              />
             )}
+            {selectedOption === "Checkbox" && <Checkboxinput />}
+            {selectedOption === "Multiple Choice" && <Radioboxinput />}
           </div>
         )}
       </div>

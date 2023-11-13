@@ -1,6 +1,7 @@
 import React from "react";
 import Dynamicinput from "./Dynamicinput";
 import Pickerdropdown from "./Pickerdropdown";
+import Stepper from "./Stepper";
 
 function Main() {
   return (
@@ -9,7 +10,10 @@ function Main() {
         Question
       </h1>
       <div className="pl-[18px] pt-[15px]">
-        <Dynamicinput placeholder="What do you want to ask ? " />
+        <Dynamicinput
+          type="inputField"
+          placeholder="What do you want to ask ? "
+        />
       </div>
       <div>
         <h1 className="capitalize leading-3 decoration-1 tracking-wide  pl-[18px] mt-[3rem]">
@@ -20,9 +24,10 @@ function Main() {
       <div className="pt-6 pl-6">
         <Pickerdropdown />
       </div>
-      <footer className="flex justify-between pt-20">
-        <h1>left side for test </h1>
-        <h2>right side for test </h2>
+
+      <footer className="flex justify-between it h-[2.5rem] mt-8 py-0 px-4 border border-gray-200  border-t-1 border-l-0 border-r-0 border-b-0 items-center ">
+        <h1>1 of 2 </h1>
+        <Stepper />
       </footer>
     </div>
   );

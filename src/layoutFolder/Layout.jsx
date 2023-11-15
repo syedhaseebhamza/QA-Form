@@ -1,27 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Main from "../components/Main";
 import Button from "../components/Button";
 function Layout() {
+  const [addQuestion, setAddQuestion] = useState([{ id: Date.now() }]);
+  const [inputData, setInputData] = useState("");
+
+  const btnAddQuestion = () => {
+    const addNewQuestion = [...addQuestion];
+    addNewQuestion.unshift({ id: Date.now() });
+    setAddQuestion(addNewQuestion);
+  };
+  const btnAddJson = () => {
+    console.log(JSON.stringify(inputData, null, 2));
+  };
+  const inputFieldDataHandler = (e) => {
+    setInputData(e.target.value);
+  };
   return (
     <div>
       <Navbar heading="New Questionnaire" loginBtn="log in" />
-      <Main />
+      {addQuestion.map((id, i) => (
+        <Main
+          key={id.id}
+          indexx={i}
+          showFooter={i > 0}
+          onChangeValue={inputFieldDataHandler}
+        />
+      ))}
+
       <Button
-        marginTop="24px"
-        marginLeft="25%"
-        height="40px"
-        width="50%"
+        className="mt-[24px] ml-[25%] h-[40px] w-[50%]"
         variant="secondary"
+        onClick={btnAddQuestion}
       >
         add question{" "}
       </Button>
       <Button
-        marginTop="24px"
-        marginLeft="25%"
-        height="40px"
-        width="50%"
+        className="mt-[24px] ml-[25%] h-[40px] w-[50%]"
         variant="primary"
+        onClick={btnAddJson}
       >
         save & share
       </Button>

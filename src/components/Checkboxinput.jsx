@@ -2,25 +2,28 @@ import React, { useState } from "react";
 import Dynamicinput from "./Dynamicinput";
 
 function Checkboxinput() {
-  const [addOption, setAddOption] = useState(["addOption"]);
+  const [addOption, setAddOption] = useState([{ id: Date.now() }]);
 
   const btnClickAddOption = () => {
-    setAddOption((prevlist) => [...prevlist, {}]);
+    const newOption = [...addOption];
+    newOption.push({ id: Date.now() });
+    setAddOption(newOption);
   };
   const btnRemoveField = (index) => {
-    setAddOption((prevList) => prevList.filter((_, i) => i !== index));
+    const filerOption = addOption.filter((input) => input.id !== index);
+    setAddOption(filerOption);
   };
   return (
     <>
-      {addOption.map((_, index) => (
-        <div className=" flex  items-center space-x-2 py-2" key={index}>
+      {addOption.map((input, index) => (
+        <div className=" flex  items-center space-x-2 py-2" key={input.id}>
           <Dynamicinput type="checkbox" />
           <Dynamicinput
             placeholder={`Option # ${index + 1}`}
             type="inputField"
           />
           <button
-            onClick={() => btnRemoveField(index)}
+            onClick={() => btnRemoveField(input.id)}
             className="inline-block w-[24px]"
           >
             <span>

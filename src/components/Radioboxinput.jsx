@@ -2,22 +2,29 @@ import React, { useState } from "react";
 import Dynamicinput from "./Dynamicinput";
 
 function Radioboxinput() {
-  const [addOption, setAddOption] = useState(["addOption"]);
+  const [addOption, setAddOption] = useState([{ id: Date.now() }]);
 
   const btnAddOption = () => {
-    setAddOption((prevItem) => [...prevItem, {}]);
+    const newOption = [...addOption];
+    newOption.push({ id: Date.now() });
+    setAddOption(newOption);
   };
-  const btnRemoveAction = (index) => {
-    setAddOption((prevItem) => prevItem.filter((_, i) => i !== index));
+  const removeOption = (index) => {
+    const filterInput = addOption.filter((input) => input.id !== index);
+    setAddOption(filterInput)
   };
+
   return (
     <>
-      {addOption.map((_, i) => (
-        <div className="flex items-center space-x-2 py-2  " key={i}>
+      {addOption.map((input, index) => (
+        <div className="flex items-center space-x-2 py-2  " key={input.id}>
           <Dynamicinput type="radio" />
-          <Dynamicinput type="inputField" placeholder={`Option # ${i + 1}`} />
+          <Dynamicinput
+            type="inputField"
+            placeholder={`Option # ${index + 1}`}
+          />
           <button
-            onClick={() => btnRemoveAction(i)}
+            onClick={() => removeOption(input.id)}
             className="inline-block w-[24px]"
           >
             <span>

@@ -18,29 +18,17 @@ const buttonStyle = tv({
   },
 });
 
-const Button = ({
-  children,
-  variant,
-  width,
-  height,
-  marginLeft,
-  marginTop,
-}) => {
+const Button = ({ children, variant, className, onClick }) => {
   const hoverEffectClass =
     variant === "primary" ? "hoverPrimaryColor" : "hoverSecondaryColor";
   return (
     <div>
       <button
-        style={{
-          width: width,
-          height: height,
-          marginLeft: marginLeft,
-          marginTop: marginTop,
-        }}
-        className={buttonStyle({
+        onClick={onClick}
+        className={`${buttonStyle({
           color: variant === "primary" ? "primary" : "secondary",
           hoverEffect: hoverEffectClass,
-        })}
+        })}  ${className}`}
       >
         {children}
       </button>

@@ -12,7 +12,14 @@ const inputStyle = tv({
   },
 });
 
-function Dynamicinput({ placeholder, value, onChange, padding, type  }) {
+function Dynamicinput({
+  placeholder,
+  value,
+  onChange,
+  padding,
+  type,
+  className,
+}) {
   return (
     <div>
       <input
@@ -20,7 +27,7 @@ function Dynamicinput({ placeholder, value, onChange, padding, type  }) {
         value={value}
         placeholder={placeholder}
         onChange={onChange}
-        className={inputStyle({ type })}
+        className={`${inputStyle({ type })} ${className}`}
         style={{ padding: padding }}
       />
     </div>

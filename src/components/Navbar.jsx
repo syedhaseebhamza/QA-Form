@@ -3,8 +3,8 @@ import React from "react";
 function Navbar({ heading, loginBtn }) {
   return (
     <div>
-      <header className="bg-primary h-[60px]">
-        <div className="flex justify-between items-center py-0 px-4 h-[58px] ">
+      <header className="">
+        <div className="flex justify-between items-center py-0 px-4 h-[58px] bg-primary fixed top-0 w-full">
           <div className="bg-primary h-[44px] w-[30px] inline-flex justify-center items-center flex-shrink-0 shadow shadow-red-800">
             <img className="" src="/MasterEmblemNoBox.svg" alt="noImage" />
           </div>

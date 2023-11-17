@@ -4,30 +4,18 @@ import Main from "../components/Main";
 import Button from "../components/Button";
 
 function Layout() {
-  const [addQuestion, setAddQuestion] = useState([
-    { id: Date.now(), inputData: "" },
-  ]);
-  const [inputData, setInputData] = useState("");
-  // const [clickCount, setClickCount] = useState(1);
+  const [Question, setAddQuestion] = useState([{ id: Date.now() }]);
+
+  const [shortAnswer, setShortAnswer] = useState("");
+
+  const [paragraph, setParagraph] = useState("");
+
+  const [checkBox, setCheckBox] = useState("");
 
   const btnAddQuestion = () => {
-    const addNewQuestion = [...addQuestion];
-    addNewQuestion.unshift({ id: Date.now(), inputData: "" });
-    // const addNewQuestion = [
-    //   ...addQuestion,
-    //   { id: Date.now(), inputData: addQuestion[0].inputData },
-    // ];
-    // addNewQuestion[0].inputData = "";
-
-    // addNewQuestion.unshift({ id: Date.now() });
-    // if (clickCount === 1) {
-    //   addNewQuestion.unshift({ id: Date.now() });
-    // } else {
-    //   addNewQuestion.push({ id: Date.now() });
-    //   addNewQuestion.reverse({ id: Date.now() });
-    // }
+    const addNewQuestion = [...Question];
+    addNewQuestion.unshift({ id: Date.now() });
     setAddQuestion(addNewQuestion);
-    // setClickCount((prevCount) => prevCount + 1);
   };
 
   const removeQuestion = (id) => {
@@ -35,7 +23,7 @@ function Layout() {
   };
 
   const inputFieldDataHandler = (e, id) => {
-    const newAdd = addQuestion.map((item) => {
+    const newAdd = Question.map((item) => {
       if (item.id === id) {
         return { ...item, inputData: e.target.value };
       }
@@ -45,20 +33,32 @@ function Layout() {
   };
 
   const jsonHandlerBtn = () => {
-    const inputDataArray = addQuestion
-      .slice(1)
-      .map((question) => question.inputData);
+    const data = [[Question], [shortAnswer], [paragraph], [checkBox]];
+    console.log(data);
+  };
+  const shortAnswerHandler = (e) => {
+    setShortAnswer(e.target.value);
+  };
 
-    const jsonData = JSON.stringify(inputDataArray);
+  const paragrapghHandler = (e) => {
+    setParagraph(e.target.value);
+  };
 
-    console.log(jsonData);
+  const checkBoxhandler = (e) => {
+    setCheckBox(e.target.value);
   };
 
   return (
     <div>
       <Navbar heading="New Questionnaire" loginBtn="log in" />
-      {addQuestion.map((item, i) => (
+      {Question.map((item, i) => (
         <Main
+          shortAnswer={item.shortAnswer}
+          shortAnswerHandler={shortAnswerHandler}
+          paragraph={item.paragraph}
+          paragrapghHandler={paragrapghHandler}
+          checkBox={item.checkBox}
+          checkBoxhandler={checkBoxhandler}
           inputData={item.inputData}
           key={item.id}
           indexx={i}
@@ -87,3 +87,23 @@ function Layout() {
 }
 
 export default Layout;
+
+// const filteredQuestion = Question.filter((q) => q.inputData.trim() !== "");
+
+//     const questionData = filteredQuestion.map(({ id, inputData }) => ({
+//       id,
+//       inputData,
+//     }));
+
+//     const combinedData = {
+//       Question: questionData.length > 0 ? questionData : undefined,
+//       paragraph: paragraph.trim() !== "" ? paragraph : undefined,
+//       checkBox: checkBox.trim() !== "" ? checkBox : undefined,
+//       shortAnswer: shortAnswer.trim() !== "" ? shortAnswer : undefined,
+//     };
+
+//     const filteredCombinedData = Object.fromEntries(
+//       Object.entries(combinedData).filter(([_, value]) => value !== undefined)
+//     );
+
+//     console.log(JSON.stringify(filteredCombinedData));

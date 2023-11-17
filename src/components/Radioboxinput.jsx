@@ -11,21 +11,22 @@ function Radioboxinput() {
   };
   const removeOption = (index) => {
     const filterInput = addOption.filter((input) => input.id !== index);
-    setAddOption(filterInput)
+    setAddOption(filterInput);
   };
 
   return (
     <>
       {addOption.map((input, index) => (
-        <div className="flex items-center space-x-2 py-2  " key={input.id}>
-          <Dynamicinput type="radio" />
+        <div className="flex     items-center pb-2   " key={input.id}>
+          <Dynamicinput className="ml-2 " type="radio" />
           <Dynamicinput
+            className="w-[35rem] ml-3"
             type="inputField"
             placeholder={`Option # ${index + 1}`}
           />
           <button
             onClick={() => removeOption(input.id)}
-            className="inline-block w-[24px]"
+            className="inline-block w-[24px] ml-[2%] "
           >
             <span>
               <img src="/cross.svg" alt="" />
@@ -35,7 +36,7 @@ function Radioboxinput() {
       ))}
       <button
         onClick={btnAddOption}
-        className="py-2 px-12 inline-flex items-center mt-4 rounded border border-solid text-primary border-gray-400  text-sm font-font-normal uppercase"
+        className="py-2 px-12 inline-flex items-center mt-4 rounded border border-solid text-primary border-gray-400  text-sm font-font-normal uppercase ml-[13rem]"
       >
         <span className="inline-block w-[24px] ">
           <svg

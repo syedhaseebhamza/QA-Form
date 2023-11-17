@@ -9,10 +9,14 @@ function Main({
   showFooter,
   onRemoveQuestion,
   inputData,
- 
-}) {
-  
 
+  shortAnswerHandler,
+  shortAnswer,
+  paragrapghHandler,
+  paragraph,
+  checkBoxhandler,
+  checkBox,
+}) {
   const [remove, setRemove] = useState(false);
 
   const removeHandler = () => {
@@ -34,7 +38,6 @@ function Main({
           placeholder="What do you want to ask ? "
           onChange={onChangeValue}
           value={inputData}
-          
         />
       </div>
       <div>
@@ -44,7 +47,7 @@ function Main({
       </div>
 
       <div className="pt-6 ">
-        <Pickerdropdown onChangeValuee={onChangeValue} inputData={inputData} />
+        <Pickerdropdown    shortAnswer={shortAnswer}  shortAnswerHandler={shortAnswerHandler} paragraph={paragraph}  paragrapghHandler={paragrapghHandler}  checkBox={checkBox} checkBoxhandler={checkBoxhandler} />
       </div>
 
       {showFooter && (

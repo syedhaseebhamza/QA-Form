@@ -3,10 +3,17 @@ import Dynamicinput from "./Dynamicinput";
 import Checkboxinput from "./Checkboxinput";
 import Radioboxinput from "./Radioboxinput";
 
-function Pickerdropdown() {
+function Pickerdropdown({
+  shortAnswer,
+  shortAnswerHandler,
+  paragraph,
+  paragrapghHandler,
+  checkBox,
+  checkBoxhandler,
+}) {
   const dropdownRef = useRef(null);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("Short Answer");
+  const [selectedOption, setSelectedOption] = useState("shortAnswer");
 
   const handleButtonClick = () => {
     setDropdownOpen(!isDropdownOpen);
@@ -33,7 +40,7 @@ function Pickerdropdown() {
     <div ref={dropdownRef}>
       <button
         onClick={handleButtonClick}
-        className="text-black border border-gray-400 font-medium rounded text-sm px-5 py-2.5 ml-4 flex space-x-24 justify-between"
+        className="text-black border border-gray-400 font-medium rounded text-sm px-5 py-2.5 ml-4 flex space-x-24 justify-between items-center"
       >
         <span className="mr-2">{selectedOption ? selectedOption : ""}</span>
         <span>
@@ -46,7 +53,7 @@ function Pickerdropdown() {
           <ul className="flex  flex-col items-center gap-[12px]">
             <li
               className={`bg-slate-200 border border-gray-400 rounded w-[95%] text-center p-[4px]`}
-              onClick={() => handleOptionSelect("Short Answer")}
+              onClick={() => handleOptionSelect("shortAnswer")}
             >
               Short Answer
             </li>
@@ -64,24 +71,39 @@ function Pickerdropdown() {
             </li>
             <li
               className={`bg-slate-200  border border-gray-400 rounded w-[95%] text-center p-[4px]`}
-              onClick={() => handleOptionSelect("Multiple Choice")}
+              onClick={() => {
+                handleOptionSelect("Multiple Choice");
+              }}
             >
               Multiple Choice
             </li>
           </ul>
         )}
 
-        {selectedOption === "Short Answer" && !isDropdownOpen && (
-          <Dynamicinput  type="inputField" placeholder="Short Answer" />
+        {selectedOption === "shortAnswer" && !isDropdownOpen && (
+          <Dynamicinput
+            type="inputField"
+            placeholder="shortAnswer"
+            className="ml-[10px] "
+            value={shortAnswer}
+            onChange={shortAnswerHandler}
+          />
         )}
         {selectedOption === "Paragraph" && !isDropdownOpen && (
           <Dynamicinput
             type="inputField"
             placeholder="Long answer text"
-            padding="1.5rem"
+            className="ml-[10px] p-[1.5rem]"
+            value={paragraph}
+            onChange={paragrapghHandler}
           />
         )}
-        {selectedOption === "Checkbox" && !isDropdownOpen && <Checkboxinput />}
+        {selectedOption === "Checkbox" && !isDropdownOpen && (
+          <Checkboxinput
+            checkBox={checkBox}
+            checkBoxhandler={checkBoxhandler}
+          />
+        )}
         {selectedOption === "Multiple Choice" && !isDropdownOpen && (
           <Radioboxinput />
         )}

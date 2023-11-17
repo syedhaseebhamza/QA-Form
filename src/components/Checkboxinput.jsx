@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import Dynamicinput from "./Dynamicinput";
 
-function Checkboxinput() {
+function Checkboxinput({ checkBox, checkBoxhandler }) {
   const [addOption, setAddOption] = useState([{ id: Date.now() }]);
 
   const btnClickAddOption = () => {
     const newOption = [...addOption];
     newOption.push({ id: Date.now() });
+    console.log(newOption);
     setAddOption(newOption);
   };
   const btnRemoveField = (index) => {
@@ -16,15 +17,18 @@ function Checkboxinput() {
   return (
     <>
       {addOption.map((input, index) => (
-        <div className=" flex  items-center space-x-2 py-2" key={input.id}>
-          <Dynamicinput type="checkbox" />
+        <div className=" flex    items-center  pb-2" key={input.id}>
+          <Dynamicinput className="ml-2" type="checkbox" />
           <Dynamicinput
+            className="w-[35rem] ml-3"
             placeholder={`Option # ${index + 1}`}
             type="inputField"
+            value={checkBox}
+            onChange={checkBoxhandler}
           />
           <button
             onClick={() => btnRemoveField(input.id)}
-            className="inline-block w-[24px]"
+            className="inline-block w-[24px] ml-[2%] "
           >
             <span>
               <img src="/cross.svg" alt="" />
@@ -34,7 +38,7 @@ function Checkboxinput() {
       ))}
       <button
         onClick={btnClickAddOption}
-        className=" uppercase text-primary  py-2 px-12 inline-flex items-center mt-4 rounded border border-solid border-gray-400  text-sm font-font-normal"
+        className=" uppercase text-primary  py-2 px-12 inline-flex items-center mt-4 rounded border border-solid border-gray-400  text-sm font-font-normal ml-[13rem]"
       >
         <span className="inline-block w-[24px] ">
           <svg

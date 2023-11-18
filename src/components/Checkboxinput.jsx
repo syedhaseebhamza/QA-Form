@@ -4,27 +4,36 @@ import Dynamicinput from "./Dynamicinput";
 function Checkboxinput({ checkBox, checkBoxhandler }) {
   const [addOption, setAddOption] = useState([{ id: Date.now() }]);
 
+  // console.log(checkBox);
+
   const btnClickAddOption = () => {
     const newOption = [...addOption];
     newOption.push({ id: Date.now() });
-    console.log(newOption);
+
     setAddOption(newOption);
   };
   const btnRemoveField = (index) => {
     const filerOption = addOption.filter((input) => input.id !== index);
     setAddOption(filerOption);
   };
+
   return (
     <>
       {addOption.map((input, index) => (
         <div className=" flex    items-center  pb-2" key={input.id}>
           <Dynamicinput className="ml-2" type="checkbox" />
+          {console.log(checkBox[`option_${index + 1}`])}
           <Dynamicinput
-            className="w-[35rem] ml-3"
+            className="w-[34rem] ml-3"
             placeholder={`Option # ${index + 1}`}
             type="inputField"
-            value={checkBox}
-            onChange={checkBoxhandler}
+            value={
+              checkBox[`option_${index + 1}`] != ""
+                ? checkBox[`option_${index + 1}`]
+                : ""
+            }
+            onChange={(e) => checkBoxhandler(e, index + 1)}
+            name={`option_${index + 1}`}
           />
           <button
             onClick={() => btnRemoveField(input.id)}

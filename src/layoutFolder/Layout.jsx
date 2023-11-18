@@ -10,7 +10,7 @@ function Layout() {
 
   const [paragraph, setParagraph] = useState("");
 
-  const [checkBox, setCheckBox] = useState("");
+  const [checkBox, setCheckBox] = useState({});
 
   const btnAddQuestion = () => {
     const addNewQuestion = [...Question];
@@ -31,11 +31,6 @@ function Layout() {
     });
     setAddQuestion(newAdd);
   };
-
-  const jsonHandlerBtn = () => {
-    const data = [[Question], [shortAnswer], [paragraph], [checkBox]];
-    console.log(data);
-  };
   const shortAnswerHandler = (e) => {
     setShortAnswer(e.target.value);
   };
@@ -44,8 +39,18 @@ function Layout() {
     setParagraph(e.target.value);
   };
 
-  const checkBoxhandler = (e) => {
-    setCheckBox(e.target.value);
+  const checkBoxhandler = (event, index) => {
+    // checkBox.push()
+    let newValue = { ...checkBox };
+
+    newValue[`option_${index + 1}`] = event.target.value;
+
+    setCheckBox(newValue);
+  };
+  const jsonHandlerBtn = () => {
+    const data = [[Question], [shortAnswer], [paragraph], [checkBox]];
+    // console.log(data);
+    // console.log(checkBox);
   };
 
   return (
@@ -53,11 +58,11 @@ function Layout() {
       <Navbar heading="New Questionnaire" loginBtn="log in" />
       {Question.map((item, i) => (
         <Main
-          shortAnswer={item.shortAnswer}
+          shortAnswer={shortAnswer}
           shortAnswerHandler={shortAnswerHandler}
-          paragraph={item.paragraph}
+          paragraph={paragraph}
           paragrapghHandler={paragrapghHandler}
-          checkBox={item.checkBox}
+          checkBox={checkBox}
           checkBoxhandler={checkBoxhandler}
           inputData={item.inputData}
           key={item.id}

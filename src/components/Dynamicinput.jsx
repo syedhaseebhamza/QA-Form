@@ -19,12 +19,15 @@ function Dynamicinput({
   padding,
   type,
   className,
+  // name,
 }) {
+  // console.log(value, "this is the value ");
   return (
     <div>
       <input
+        // name={name}
         type={type}
-        value={value}
+        defaultValue={value || ""}
         placeholder={placeholder}
         onChange={onChange}
         className={`${inputStyle({ type })} ${className}`}

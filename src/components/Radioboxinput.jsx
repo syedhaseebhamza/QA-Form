@@ -20,7 +20,7 @@ function Radioboxinput() {
         <div className="flex     items-center pb-2   " key={input.id}>
           <Dynamicinput className="ml-2 " type="radio" />
           <Dynamicinput
-            className="w-[35rem] ml-3"
+            className="w-[34rem] ml-3"
             type="inputField"
             placeholder={`Option # ${index + 1}`}
           />

@@ -10,7 +10,10 @@ function Pickerdropdown({
   paragrapghHandler,
   checkBox,
   checkBoxhandler,
+  isChecked,
+  handleCheckboxChange
 }) {
+  console.log(shortAnswer);
   const dropdownRef = useRef(null);
   const [isDropdownOpen, setDropdownOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("shortAnswer");
@@ -35,6 +38,7 @@ function Pickerdropdown({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
 
   return (
     <div ref={dropdownRef}>
@@ -102,6 +106,8 @@ function Pickerdropdown({
           <Checkboxinput
             checkBox={checkBox}
             checkBoxhandler={checkBoxhandler}
+            isChecked={isChecked}
+            handleCheckboxChange={handleCheckboxChange}
           />
         )}
         {selectedOption === "Multiple Choice" && !isDropdownOpen && (

@@ -16,6 +16,8 @@ function Main({
   paragraph,
   checkBoxhandler,
   checkBox,
+  isChecked,
+  handleCheckboxChange
 }) {
   const [remove, setRemove] = useState(false);
 
@@ -26,7 +28,7 @@ function Main({
   if (remove) {
     return null;
   }
-
+  // console.log(inputData);
   return (
     <div className="  w-[50%] mx-auto bg-slate-50 mt-28 pb-5">
       <h1 className="pl-[18px] pt-[2rem] capitalize leading-3 decoration-1 tracking-wide ">
@@ -46,8 +48,17 @@ function Main({
         </h1>
       </div>
 
-      <div className="pt-6 ">
-        <Pickerdropdown    shortAnswer={shortAnswer}  shortAnswerHandler={shortAnswerHandler} paragraph={paragraph}  paragrapghHandler={paragrapghHandler}  checkBox={checkBox} checkBoxhandler={checkBoxhandler} />
+      <div className="pt-6">
+        <Pickerdropdown
+          shortAnswer={shortAnswer}
+          shortAnswerHandler={shortAnswerHandler}
+          paragraph={paragraph}
+          paragrapghHandler={paragrapghHandler}
+          checkBox={checkBox}
+          checkBoxhandler={checkBoxhandler}
+          isChecked={isChecked}
+          handleCheckboxChange={handleCheckboxChange}
+        />
       </div>
 
       {showFooter && (
